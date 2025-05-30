@@ -46,7 +46,7 @@ Este guia pressupõe que você já tem uma compreensão básica de Kubernetes e 
 
 **Servidores:** Master-Node e Worker-Node
 
-```java
+```bash
 apt-get update
 apt-get install ca-certificates curl
 install -m 0755 -d /etc/apt/keyrings
