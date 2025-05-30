@@ -1,5 +1,5 @@
 <h1 align="center" style="border-bottom: none">
-    <img alt="Kubernetes" src="./img/kubernetes.png" width="300" height="200">
+    <img alt="Kubernetes" src="./img/kubernetes.png" width="300" height="300">
 </h1>
 
 <center><h1>Kubernetes</h1></center>
@@ -235,6 +235,8 @@ kubectl run test-dns --image=busybox:1.28 --rm -it --restart=Never -- nslookup k
 
 ## Testes
 
+Os testes podem ser realizados em qualquer servidor.
+
 ### Crie um Deployment do Nginx
 
 ```bash
@@ -253,7 +255,7 @@ kubectl expose deployment nginx-test --type=NodePort --port=80
 kubectl get pods -l app=nginx-test
 ```
 
-### Verifique se o Service foi criado e qual porta do está sendo utilizado:
+### Verifique se o Service foi criado e a porta que está sendo utilizada:
 
 ```bash
 kubectl get service nginx-test
