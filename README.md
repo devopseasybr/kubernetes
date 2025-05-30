@@ -219,3 +219,55 @@ kubeadm join master-node.devopseasybr.local:6443 \
         --token <TOKEN_GERADO PELO MASTER-NODE> \
         --discovery-token-ca-cert-hash sha256:<TOKEN-CA_GERADO PELO MASTER NODE>
 ```
+
+## Pós-Instalação
+
+Execute os comandos abaixo nos dois servidores.
+
+```bash
+kubectl get componentstatus
+kubectl get nodes -owide
+kubectl describe nodes
+kubectl get namespaces
+kubectl get pods -n kube-system
+kubectl run test-dns --image=busybox:1.28 --rm -it --restart=Never -- nslookup kubernetes.default
+```
+
+## Testes
+
+### Crie um Deployment do Nginx
+
+```bash
+kubectl create deployment nginx-test --image=nginx
+```
+
+#### Exponha o Deployment como um Service (NodePort para acesso externo)
+
+```bash
+kubectl expose deployment nginx-test --type=NodePort --port=80
+```
+
+### Verifique se os POD's estão sendo executados
+
+```bash
+kubectl get pods -l app=nginx-test
+```
+
+### Verifique se o Service foi criado e qual porta do está sendo utilizado:
+
+```bash
+kubectl get service nginx-test
+```
+
+### Acesse a página inicial do Nginx
+
+```bash
+curl http://<IP_DO_WORKER_NODE>:<PORTA_NODEPORT>
+```
+
+### Após o teste remova os objetos criados
+
+```bash
+kubectl delete service nginx-test
+kubectl delete deployment nginx-test
+```
