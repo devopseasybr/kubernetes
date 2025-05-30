@@ -37,7 +37,7 @@ Este guia pressupõe que você já tem uma compreensão básica de Kubernetes e 
 
 **Servidores:** Master-Node e Worker-Node
 
-```bash
+```java
 192.168.0.100 master-node.devopseasybr.local master-node
 192.168.0.101 worker-node.devopseasybr.local worker-node
 
